@@ -20,99 +20,76 @@
 </head>
 
 <body>
-      <!-- Image and text -->
-      <nav class="navbar navbar-light"  style="background-color: rgb(89, 89, 89);">
-        <a class="navbar-brand" href="#">
-          <img src="1.png" width="80" height="80"
-           class="d-inline-block align-top" alt="" id=mhimg>
-      </a>
-      <h2 class="mhtitle">MyHeritage Lab</h2>
+  <!-- Image and text -->
+  <nav class="navbar navbar-light" style="background-color: rgb(89, 89, 89);">
+    <a class="navbar-brand" href="#">
+      <img src="1.png" width="80" height="80" class="d-inline-block align-top" alt="" id=mhimg>
+    </a>
+    <h2 class="mhtitle">MyHeritage Lab</h2>
 
-      </nav>
+  </nav>
 
+  <br>
+  <br>
+  <section class="pTable">
+
+    <form class="form-inline my-2 my-lg-0" id=searchplate>
+      <input class="form-control mr-sm-2" type="search" placeholder="Search For Plate" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+    <div class="container-fluid">
+      <h2>Plate List </h2>
+
+      <table class="table table-striped table-dark" id="mytable">
+        <thead>
+          <th>Plate #</th>
+          <th>Number</th>
+          <th>Start Time</th>
+          <th>Room</th>
+          <th>Validator</th>
+          <th>Dispenser</th>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td> <input type="text" id="plateSerialNumber"></td>
+            <td> <input type="text" id="fee-2" class="fee" name="php-fee">
+            </td>
+            <td> <select name="Room">
+                <option value="1">1</option>
+                <option value="2">2</option>
+              </select></td>
+            <td> <input type="text" id="fee-2" class="fee" name="php-fee"></td>
+            <td> <input type="text" id="fee-2" class="fee" name="php-fee"> </td>
+          </tr>
+
+        </tbody>
+      </table>
+
+
+      <script>
+        var d = new Date();
+        var day = d.getDate();
+        var month = d.getMonth() + 1;
+        var n = d.getFullYear();
+        var year = n.toString().substr(2, 2);
+        var parsedDate = year + month + day
+        document.getElementById('plateSerialNumber').value = parsedDate;
+      </script>
+
+      <a href="#" id="insert-more"> <button type="button" class="btn btn-primary btn-block" onclick="addRow"><i class="fas fa-vial"></i> New Plate</button></a>
       <br>
-      <br>
-<section class="pTable">
-
-      <form class="form-inline my-2 my-lg-0" id=searchplate>
-        <input class="form-control mr-sm-2" type="search" placeholder="Search For Plate" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
-
-      <div class="container-fluid">
-        <h2>Plate List </h2>
-
-        <table class="table table-dark table-striped " id="mytable">
-          <thead>
-            <th>Plate #</th>
-            <th>Number</th>
-            <th>Start Time</th>
-            <th>Room</th>
-            <th>Validator</th>
-            <th>Dispenser</th>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <input type="text" id="plateNumber">
-              </td>
-              <td>
-                <input type="text" id="plateSerialNumber" >
-              </td>
-              <td>
-                <input type="text" id="fee-2" class="fee" name="php-fee">
-              </td>
-	<td>
-                <select name="Room">
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                </select>
-              </td>
-	        <td>
-                <input type="text" id="fee-2" class="fee" name="php-fee">
-              </td>
-     <td>
-                <input type="text" id="fee-2" class="fee" name="php-fee">
-              </td>
-
-            </tr>
-          </tbody>
-        </table>
 
 
-<script>
-  var d = new Date();
-  var day = d.getDate();
-  var month = d.getMonth()+1;
-  var n = d.getFullYear();
-  var year= n.toString().substr(2, 2);
-  var parsedDate=year+month+day
-    document.getElementById('plateSerialNumber').value = parsedDate;
-</script>
-
-        <a href="#" id="insert-more"> <button type="button" class="btn btn-primary btn-block"><i class="fas fa-vial"></i> New Plate</button></a>
-        <br>
-
-
-        <script>
-          $("#insert-more").click(function() {
-            $("#mytable").each(function() {
-              var tds = '<tr>';
-              jQuery.each($('tr:last td', this), function() {
-                tds += '<td>' + $(this).html() + '</td>';
-              });
-              tds += '</tr>';
-              if ($('tbody', this).length > 0) {
-                $('tbody', this).append(tds);
-              } else {
-                $(this).append(tds);
-              }
-            });
-          });
-
-        </script>
-      </div>
-    </section>
+      <script>
+      document.getElementById("insert-more").addEventListener("click", addRow);
+        function addRow(){
+          alert("Clicked")
+        }
+      </script>
+    </div>
+  </section>
 
 </body>
 
